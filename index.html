@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head><style type="text/css">div {
+    font-family:"Helvetica", "Arial", sans-serif;
+}
+p {
+    font-family:"Helvetica", "Arial", sans-serif;
+}</style>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+<title>HTML5, CSS3 and JavaScript Demo - Liveweave</title>
+</head>
+<body style="">
+<p>
+PVP points:
+<input id="ppoints" type="number">
+<br>
+  Colosseum points:
+<input id="cpoints" type="number">
+<br>
+<br>
+</p><div id="mess">Please input your PVP points!
+<br>Please input your Colosseum points!</div>
+  <p></p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="MUKXUTU54ZREL">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+  
+<script>$(':input').bind("keyup change", function calc(){
+     var pvar = [
+        [0, "Peon", 0, 0, 0, 0, 0, ""],
+		[2, "Initiate", 0, 0, 0, 0, 0, ""],
+        [25, "Initiate First Circle", 0, 0, 0, 0, 0, ""],
+        [50, "Initiate Second Circle", 0, 0, 0, 0, 0, ""],
+        [75, "Senior Initiate", 10, 0, 0, 0, 0, ""],
+        [100, "Novice", 0, 20, 0, 0, 0, ""],
+        [300, "Novice First Circle", 0, 0, 50, 0, 0, ""],
+        [500, "Novice Second Circle", 0, 0, 0, 1, 0, ""],
+        [700, "Senior Novice", 10, 0, 0, 0, 0, ""],
+        [900, "Brawler", 0, 20, 0, 0, 0, ""],
+        [1300, "Brawler First Circle", 0, 0, 50, 0, 0, ""],
+        [1700, "Brawler Second Circle", 0, 0, 0, 0, 0, "Master-at-Arms"],
+        [2100, "Senior Brawler", 10, 0, 0, 0, 0, ""],
+        [2500, "Scrapper", 0, 40, 0, 0, 0, ""],
+        [3300, "Scrapper First Circle", 0, 0, 50, 0, 0, ""],
+        [4100, "Scrapper Second Circle", 0, 0, 0, 0, 1, ""],
+        [4900, "Senior Scrapper", 10, 0, 0, 0, 0, ""],
+        [5700, "Fighter", 0, 40, 0, 0, 0, ""],
+        [7300, "Fighter First Circle", 0, 0, 50, 0, 0, ""],
+        [8900, "Fighter Second Circle", 0, 0, 0, 0, 0, "Prince Xanderous"],
+        [10500, "Senior Fighter", 10, 0, 0, 0, 0, ""],
+        [12100, "Warrior", 0, 40, 0, 0, 0, ""],
+        [15300, "Warrior First Circle", 0, 0, 50, 0, 0, ""],
+        [18500, "Warrior Second Circle", 0, 0, 0, 1, 0, ""],
+        [21700, "Senior Warrior", 10, 0, 0, 0, 0, ""],
+        [24900, "Duelist", 0, 40, 0, 0, 0, ""],
+        [31300, "Duelist First Circle", 0, 0, 50, 0, 0, ""],
+        [37700, "Duelist Second Circle", 0, 0, 0, 0, 0, "Strike IV"],
+        [44100, "Senior Duelist", 10, 0, 0, 0, 0, ""],
+        [50500, "Blade-Wielder", 0, 50, 0, 0, 0, ""],
+        [60100, "Blade-Weaver", 0, 0, 50, 0, 0, ""],
+        [69700, "Blade-Dancer", 0, 0, 0, 0, 1, ""],
+        [79300, "Blade-Master", 0, 0, 0, 0, 0, "Parry and Riposte"],
+        [88900, "Lion Heart", 0, 50, 0, 0, 0, ""],
+        [101700, "Manticore Heart", 0, 0, 50, 0, 0, ""],
+        [114500, "Wyvern Heart", 0, 0, 0, 0, 0, "Countess Serpina Essence"],
+        [127300, "Dragon Heart", 10, 0, 0, 0, 0, ""],
+        [140100, "Champion of the Duel", 0, 100, 0, 0, 0, ""],
+        [152900, "Hero of the Duel", 0, 0, 50, 0, 0, ""],
+        [165700, "Master of the Duel", 0, 0, 0, 1, 0, ""],
+        [178500, "Grandmaster of the Duel", 0, 0, 0, 0, 0, "Betrayer's Deserts"]
+    ]; // PVP reward array of arrays
+    var cvar = [
+        [0, "Peon", 0, 0, 0, 0, 0, ""],
+        [5, "Thug", 0, 0, 0, 0, 0, ""],
+        [25, "Brawler", 0, 0, 0, 0, 0, "Chance for double XP in Colosseum raids"],
+        [50, "Scrapper", 0, 0, 0, 0, 0, "Merman's Net"],
+        [75, "Ripper", 0, 0, 0, 0, 0, "Merman Gladiator"],
+        [100, "Pit-Fighter", 0, 20, 0, 0, 0, ""],
+        [200, "Pit-Warrior", 0, 0, 50, 0, 0, ""],
+        [300, "Pit-Champion", 0, 0, 0, 1, 0, ""],
+        [400, "Pit-Master", 5, 0, 0, 0, 0, ""],
+        [500, "Cage-Fighter", 0, 20, 0, 0, 0, ""],
+        [750, "Cage-Warrior", 0, 0, 50, 0, 0, ""],
+        [1000, "Cage-Champion", 0, 0, 0, 0, 0, "Morituri Te Salutant"],
+        [1250, "Cage-Master", 0, 0, 0, 0, 0, "Crowe's Band"],
+        [1500, "Arena-Fighter", 0, 40, 0, 0, 0, ""],
+        [2000, "Arena-Warrior", 0, 0, 50, 0, 0, ""],
+        [2500, "Arena-Champion", 0, 0, 0, 0, 1, ""],
+        [3000, "Arena-Master", 5, 0, 0, 0, 0, ""],
+        [3500, "Gladiator", 0, 40, 0, 0, 0, ""],
+        [4500, "Veteran Gladiator", 0, 0, 50, 0, 0, ""],
+        [5500, "Champion Gladiator", 0, 0, 0, 0, 0, "Gladiators"],
+        [6500, "Master Gladiator", 0, 0, 0, 0, 0, "Queen Lena"],
+        [7500, "Magnus Gladiator", 0, 40, 0, 0, 0, ""],
+        [9000, "Veteran Magnus Gladiator", 0, 0, 50, 0, 0, ""],
+        [10500, "Champion Magnus Gladiator", 0, 0, 0, 1, 0, ""],
+        [12000, "Master Magnus Gladiator", 5, 0, 0, 0, 0, ""],
+        [13500, "Maximus Gladiator", 0, 40, 0, 0, 0, ""],
+        [15500, "Veteran Maximus Gladiator", 0, 0, 50, 0, 0, ""],
+        [17500, "Champion Magnus Gladiator", 0, 0, 0, 0, 0, "Carnifex"],
+        [19500, "Master Maximus Gladiator", 0, 0, 0, 0, 0, "Scythed War Chariot"],
+        [21500, "Interfector", 0, 50, 0, 0, 0, ""],
+        [24500, "Grand Interfector", 0, 0, 50, 0, 0, ""],
+        [24500, "Grand Interfector", 0, 0, 50, 0, 0, ""],
+        [27500, "Blood-Bathed Interfector", 0, 0, 0, 0, 1, ""],
+        [30500, "Interfector Maximus", 0, 0, 0, 0, 0, "Golden Wreath"],
+        [33500, "Carnifex", 0, 50, 0, 0, 0, ""],
+        [37500, "Grand Carnifex", 0, 0, 50, 0, 0, ""],
+        [41500, "Bloody-Handed Carnifex", 0, 0, 0, 0, 0, "Tisiphone the VengefulÃƒâ€šÃ‚Â (Raid Essence)"],
+        [45500, "Carnifex Maximus", 0, 0, 0, 0, 0, "Kavalan Barbarian"],
+        [49500, "Warrior of the Bloody Sand", 0, 100, 0, 0, 0, ""],
+        [57500, "Veteran of a Myriad Massacres", 0, 0, 50, 0, 0, ""],
+        [66500, "Champion of the Baying Crowd", 0, 0, 0, 1, 0, ""],
+        [76800, "Master of the Colosseum", 0, 0, 0, 0, 0, "Panoply of the Colossus"]
+    ]; //Colosseum rewards array of arrays
+    var pp = $(ppoints).val(); // PVP points variable
+    var cp = $(cpoints).val(); // Colosseum points variable
+    var pe = ""; // PVP error message
+    var ce = ""; // Colosseum error message
+    var prank = ""; // pvp rank string
+    var crank = ""; // colosseum rank string
+    var tex = ""; // default string
+    var ptick = ""; // pvp tickets
+    var ctok = ""; // colosseum tokens
+    var ad = 0; // pvp total ad bonus
+    var pb = 0; // pvp total power bonus
+    var pmult1 = ""; // chance for multiplied pvp points
+    var pmult2 = ""; // chance for multiplied pvp power
+    var cmult1 = ""; // chance for multiplied colosseum points
+    var cmult2 = ""; // chance for multiplies colosseum power
+    var prew = ""; // pvp misc rewards string
+    var crew = ""; // colosseum misc rewards string
+    var ads = "";
+    var powers = "";
+    if (isNaN(pp) || pp < 0 || pp.length === 0) {
+        pe = "Please input your PVP points!<br>";
+    } else {
+        ptick = 60;
+        pmult1 = 1;
+        pmult2 = 1;
+        for (var i = 0; pvar[i]; i++) {
+            if (pvar[i][0] <= pp) {
+              prank = "PVP rank: <b>" + i + ": " + pvar[i][1] + "</b><br>";
+                ptick += pvar[i][2];
+                ad += pvar[i][3];
+                pb += pvar[i][4];
+                pmult1 += pvar[i][5];
+                pmult2 += pvar[i][6];
+                if (pvar[i][7] !== "") {
+                    prew += '<a href="http://dotd.wikia.com/' + pvar[i][7] + '" target="_blank">' + pvar[i][7] + "</a><br>";
+                }
+            }
+        } // end of for cycle
+        ptick = "You have " + ptick + " PVP tickets per day<br>";
+        pmult1 = "Chance for multiplied PVP points: " + pmult1 + "x<br>";
+        pmult2 = "Chance for multiplied PVP power: " + pmult2 + "x<br>";
+        if (prew !== "") {
+            prew = "<br><b>Other rewards from PVP:</b><br>" + prew;
+        }
+    } // end of pvp else
+    if (isNaN(cp) || cp < 0 || cp.length === 0) {
+        ce = "Please input your Colosseum points!<br>";
+    } else {
+        ctok = 20;
+        cmult1 = 1;
+        cmult2 = 1;
+        for (var j = 0; pvar[j]; j++) {
+            if (cvar[j][0] <= cp) {
+                crank = "Colosseum rank: <b>" + j + ": " + cvar[j][1] + "</b><br>";
+                ctok += cvar[j][2];
+                ad += cvar[j][3];
+                pb += cvar[j][4];
+                cmult1 += pvar[j][5];
+                cmult2 += pvar[j][6];
+                if (cvar[j][7] !== "") {
+                    if (cvar[j][7] === cvar[2][7]) {
+                        crew += cvar[2][7] + "<br>";
+                    } else {
+                        crew += '<a href="http://dotd.wikia.com/' + cvar[j][7] + '" target="_blank">' + cvar[j][7] + "</a><br>";
+                    }
+                }
+            }
+        } // end of for cycle
+        ctok = "You have " + ctok + " Colosseum tickets per day<br>";
+        cmult1 = "Chance for multiplied Colosseum points: " + cmult1 + "x<br>";
+        cmult2 = "Chance for multiplied Colosseum power: " + cmult2 + "x<br>";
+        if (crew !== "") {
+            crew = "<br><b>Other rewards from Colosseum:</b><br>" + crew;
+        }
+    } // end of colosseum else
+    if (pe === "" || ce === "") {
+        ads = "PVP attack/defense bonus: <b>" + ad + "</b><br>";
+        powers = "PVP power bonus is: <b>" + pb + "</b><br>";
+    }
+    tex = pe + ce + ads + powers + prank + crank + ptick + ctok + pmult1 + pmult2 + cmult1 + cmult2 + prew + crew + "<br>";
+    $('#mess').html(tex); 
+});</script></body>
